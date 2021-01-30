@@ -74,12 +74,12 @@ public class Employee extends Person implements Billable {
     @Override
     public double getBalanceDue(Map<String, Double> servicesRendered) {
         double balanceTotal = 0;
-        double discountedPrice = 0;
-        if(servicesRendered.containsKey("Walking")){
-            discountedPrice = servicesRendered.get("Walking") /2;
-            servicesRendered.replace("Walking", discountedPrice);
-        } for(Map.Entry<String,Double> entry : servicesRendered.entrySet()){
-            balanceTotal = entry.getValue() + balanceTotal;
+        for(Map.Entry<String,Double> entry : servicesRendered.entrySet()) {
+            if (entry.getKey().equals("Walking")) {
+                balanceTotal = entry.getValue() / 2;
+            } else {
+                balanceTotal = entry.getValue() + balanceTotal;
+            }
         }
         return balanceTotal;
 

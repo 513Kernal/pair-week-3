@@ -7,7 +7,7 @@ public class Pet {
 
     private String name;
     private String species;
-    List<String>vaccinations = new ArrayList<>();
+    private List<String>vaccinations = new ArrayList<>();
 
     public Pet(String name, String species){
         this.name = name;
@@ -39,7 +39,11 @@ public class Pet {
     }
 
     public String listVaccinations(){
-        return
+        String output = "";
+        for (String vaccination : vaccinations){
+            output = output + vaccination + ", ";
+        }
+        return output.substring(0,output.length() - 2);
     }
 
 }
