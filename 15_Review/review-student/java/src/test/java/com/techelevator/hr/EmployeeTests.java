@@ -26,7 +26,7 @@ public class EmployeeTests {
 
         sut.raiseSalary(5);
 
-        assertEquals("The employee raise of 5% was not computed correctly.",sut.getSalary(), 105, 0.0);
+        assertEquals("The employee raise of 5% was not computed correctly.",105, sut.getSalary(),  0.0);
     }
 
     @Test

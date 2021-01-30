@@ -1,8 +1,11 @@
 package com.techelevator.hr;
 
+import com.techelevator.Billable;
 import com.techelevator.Person;
 
-public class Employee extends Person {
+import java.util.Map;
+
+public class Employee extends Person implements Billable {
 
     private int employeeId;
     private String title;
@@ -65,4 +68,24 @@ public class Employee extends Person {
         this.salary = salary;
     }
 
+
+
+
+    @Override
+    public double getBalanceDue(Map<String, Double> servicesRendered) {
+        double balanceTotal = 0;
+        double discountedPrice = 0;
+        if(servicesRendered.containsKey("Walking")){
+            discountedPrice = servicesRendered.get("Walking") /2;
+            servicesRendered.replace("Walking", discountedPrice);
+        } for(Map.Entry<String,Double> entry : servicesRendered.entrySet()){
+            balanceTotal = entry.getValue() + balanceTotal;
+        }
+        return balanceTotal;
+
+    }
+
+
+
+    //so if key equals walking, value divided by 2
 }
